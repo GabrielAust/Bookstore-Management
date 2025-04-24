@@ -1,3 +1,5 @@
+# Run "python data_generator.py > database_files/02_mock_data.sql" and it will auto-populate the sql file.
+
 from faker import Faker
 import random
 

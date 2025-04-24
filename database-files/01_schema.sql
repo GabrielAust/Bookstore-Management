@@ -1,5 +1,3 @@
--- 01_schema.sql
-
 CREATE DATABASE IF NOT EXISTS OnlineBookstoreDB;
 USE OnlineBookstoreDB;
 
