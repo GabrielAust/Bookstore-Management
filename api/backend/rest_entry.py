@@ -42,6 +42,16 @@ def create_app():
     app.register_blueprint(simple_routes)
     app.register_blueprint(customers,   url_prefix='/c')
     app.register_blueprint(products,    url_prefix='/p')
++
++    # --- Health‐check endpoint -------------------------------------------
++    @app.route('/health', methods=['GET'])
++    def health_check():
++        """
++        Simple endpoint to verify the API is running.
++        You can expand this later to check DB or other dependencies.
++        """
++        return {'status': 'healthy'}, 200
++
 
     # Don't forget to return the app object
     return app
