@@ -3,7 +3,7 @@ services:
     build: ./app
     container_name: web-app
     hostname: web-app
-    volumes: ["./app/src:/appcode"]
+    volumes: [ "./app/src:/appcode" ]
     ports:
       - 8501:8501
 
@@ -11,13 +11,13 @@ services:
     build: ./api
     container_name: web-api
     hostname: web-api
-    volumes: ["./api:/apicode"]
+    volumes: [ "./api:/apicode" ]
     ports:
       - 4000:4000
 
   db:
     env_file:
-      - ./api/.env
+      - ./.env
     image: mysql:9
     container_name: mysql_db
     hostname: db

@@ -3,14 +3,9 @@ import json
 from backend.db_connection import db
 from backend.simple.playlist import sample_playlist_data
 
-# This blueprint handles some basic routes that you can use for testing
 simple_routes = Blueprint('simple_routes', __name__)
 
 
-# ------------------------------------------------------------
-# / is the most basic route
-# Once the api container is started, in a browser, go to 
-# localhost:4000/playlist
 @simple_routes.route('/')
 def welcome():
     current_app.logger.info('GET / handler')
@@ -19,9 +14,7 @@ def welcome():
     response.status_code = 200
     return response
 
-# ------------------------------------------------------------
-# /playlist returns the sample playlist data contained in playlist.py
-# (imported above)
+
 @simple_routes.route('/playlist')
 def get_playlist_data():
     current_app.logger.info('GET /playlist handler')
@@ -29,8 +22,8 @@ def get_playlist_data():
     response.status_code = 200
     return response
 
-# ------------------------------------------------------------
-@simple_routes.route('/niceMesage', methods = ['GET'])
+
+@simple_routes.route('/niceMesage', methods=['GET'])
 def affirmation():
     message = '''
     <H1>Think about it...</H1>
@@ -41,8 +34,8 @@ def affirmation():
     response.status_code = 200
     return response
 
-# ------------------------------------------------------------
-# Demonstrates how to redirect from one route to another. 
+
 @simple_routes.route('/message')
 def mesage():
-    return redirect(url_for(affirmation))
+    # point at blueprint_name.view_func
+    return redirect(url_for('simple_routes.affirmation'))
